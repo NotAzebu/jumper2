@@ -12,6 +12,7 @@ public class playerController : MonoBehaviour
     private Rigidbody2D rigidBody;
     public float jumpRaycast = 0.6f;
     public float runningSpeed = 1.0f;
+    private bool jumpPressed = false;
 
     //public bool isGrounded;
     void Awake()
@@ -26,15 +27,30 @@ public class playerController : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(runningSpeed, rigidBody.velocity.y);
         }
+        if (jumpPressed)
+        {
+            Jump();
+        }
+      
     }
+    
 
     void Update()
     {
         if (Input.GetKey("space"))
         {
-            Debug.Log("Jump button pressed");
-            Jump();
+        Debug.Log("Jump Button Pressed");
+        jumpPressed = true;
         }
+        else
+        {
+            jumpPressed = false;
+        }
+       // if (Input.GetKey("space"))
+       // {
+       //     Debug.Log("Jump button pressed");
+       //     Jump();
+       // }
     }
     void Jump()
     {
