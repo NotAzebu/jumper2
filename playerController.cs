@@ -46,6 +46,14 @@ public class playerController : MonoBehaviour
         {
             jumpPressed = false;
         }
+        if (IsGrounded())
+        {
+            GetComponentInChildren<ParticleSystem>().Play();
+        }
+        else
+        {
+            GetComponentInChildren<ParticleSystem>().Pause();
+        }
        // if (Input.GetKey("space"))
        // {
        //     Debug.Log("Jump button pressed");
